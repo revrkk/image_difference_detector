@@ -2,18 +2,19 @@
 <ui version="4.0">
   <class>Dialog</class>
 
+	
   <widget class="QDialog" name="Dialog">
     <property name="geometry">
       <rect>
         <x>0</x>
         <y>0</y>
-        <width>750</width>
-        <height>850</height>
+        <width>800</width>
+        <height>700</height>
       </rect>
     </property>
 
     <property name="windowTitle">
-      <string>Image Difference Detection</string>
+      <string>Farmin Building variation detection</string>
     </property>
 
     <widget class="QPushButton" name="btnLoadImage">
@@ -36,7 +37,7 @@
           <x>20</x>
           <y>45</y>
           <width>351</width>
-          <height>331</height>
+          <height>250</height>
         </rect>
       </property>
       <property name="frameShape">
@@ -53,7 +54,7 @@
           <x>380</x>
           <y>45</y>
           <width>351</width>
-          <height>331</height>
+          <height>250</height>
         </rect>
       </property>
       <property name="frameShape">
@@ -68,7 +69,7 @@
       <property name="geometry">
         <rect>
           <x>20</x>
-          <y>386</y>
+          <y>295</y>
           <width>351</width>
           <height>22</height>
         </rect>
@@ -82,7 +83,7 @@
       <property name="geometry">
         <rect>
           <x>20</x>
-          <y>410</y>
+          <y>312</y>
           <width>711</width>
           <height>22</height>
         </rect>
@@ -106,13 +107,13 @@
       <property name="geometry">
         <rect>
           <x>20</x>
-          <y>432</y>
+          <y>330</y>
           <width>711</width>
           <height>25</height>
         </rect>
       </property>
       <property name="text">
-        <string>Apply Canny</string>
+        <string>Detect Changes</string>
       </property>
     </widget>
 
@@ -120,9 +121,9 @@
       <property name="geometry">
         <rect>
           <x>20</x>
-          <y>468</y>
+          <y>360</y>
           <width>351</width>
-          <height>331</height>
+          <height>300</height>
         </rect>
       </property>
       <property name="frameShape">
@@ -167,11 +168,32 @@
       </property>
     </widget>
 
+
+
+	<widget class="QLabel" name="lblCars">
+      <property name="geometry">
+        <rect>
+          <x>380</x>
+          <y>530</y>
+          <width>351</width>
+          <height>24</height>
+        </rect>
+      </property>
+      <property name="frameShape">
+        <enum>QFrame::Box</enum>
+      </property>
+      <property name="text">
+        <string />
+      </property>
+    </widget>
+	
+	
+	
     <widget class="QPushButton" name="btnSaveImage">
       <property name="geometry">
         <rect>
           <x>20</x>
-          <y>808</y>
+          <y>665</y>
           <width>711</width>
           <height>25</height>
         </rect>
