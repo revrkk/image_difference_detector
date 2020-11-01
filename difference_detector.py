@@ -16,13 +16,14 @@ class MainForm(QDialog):
         super(MainForm, self).__init__()
 
         loadUi('main-form.ui', self)
-
+            
         self.image=None
         self.image2=None
         self.image_difference=None
         self.processed_image=None
 
         self.threshold=100
+        self.No_cars=0
         
         self.lblOutputText.setText('Threshold: {0}'.format(self.threshold))
         
@@ -33,7 +34,7 @@ class MainForm(QDialog):
         
     @pyqtSlot()
     def loadClicked(self):
-        fname, filter=QFileDialog.getOpenFileName(self, 'Open File', 'D:\\', "Image Files (*.jpg)")
+        fname, filter=QFileDialog.getOpenFileName(self, 'Open File', 'D:\\', "Image Files (*.tif)")
         if fname:
             self.loadImage(fname)
         else:
@@ -80,8 +81,9 @@ class MainForm(QDialog):
             cv2.rectangle(self.processed_image, (int(boundRect[i][0]), int(boundRect[i][1])), \
               (int(boundRect[i][0]+boundRect[i][2]), int(boundRect[i][1]+boundRect[i][3])), color, 2)
               
-        self.lblNoOfContours.setText('No. of contours: {0}'.format(len(contours)))
+        self.lblNoOfContours.setText('No. of changes: {0}'.format(len(contours)))
         self.lblFinalThreshold.setText('Threshold: {0}'.format(self.threshold))
+        self.lblCars.setText('No. of Cars detected: {}'.format(self.No_cars))
         self.displayImage(self.processed_image, 3)
 
     @pyqtSlot()
@@ -106,7 +108,7 @@ class MainForm(QDialog):
         if(self.image is not None and self.image2 is not None):
             gray1=cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY) if len(self.image.shape)>=3 else self.image
             gray2=cv2.cvtColor(self.image2, cv2.COLOR_BGR2GRAY) if len(self.image2.shape)>=3 else self.image2
-            self.image_difference = cv2.subtract(gray1, gray2)
+            self.image_difference = cv2.absdiff(gray1, gray2)
 
     def displayImage(self, image, window):
         qformat=QImage.Format_Indexed8
